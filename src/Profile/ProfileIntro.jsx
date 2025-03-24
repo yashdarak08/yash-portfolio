@@ -10,7 +10,6 @@ import { GiBrain } from "react-icons/gi";
 import { emailId, whatsappNumber, callNumber, linkedinLink } from "../constants";
 import { FaGithub } from "react-icons/fa";
 
-
 export default function ProfileIntro({isMobile}) {
     const textRef = useRef();
     const ref = React.useRef(null);

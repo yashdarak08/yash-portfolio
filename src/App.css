@@ -1,0 +1,15 @@
+:root {
+	--primaryBackground: #161a2b;
+	--primaryColor: #ffffff;
+
+	--boxShadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+
+	--accentColor1: rgba(17, 122, 255, 1);
+
+}
+
+body {
+	text-align: center;
+	background-color: var(--primaryBackground);
+	font-family: Comic Sans MS
+}

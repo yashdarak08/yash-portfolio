@@ -44,14 +44,14 @@ export default function ProfileIntro({isMobile}) {
                         I am fascianted by Machine Learning, Data Science and Quantitative Research.
                 </div>
                 <div className="profile-description-div">
-                        I am very proficient in Algoeithmic Thinking and shipping code!
+                        I am very proficient in Algorithmic Thinking and shipping code!
                 </div>
                 <div className="profile-description-div">
                         A few things about me - I am an ABACUS/UCMAS Gold Medallist, a frequent ranker in Indian Sudoku Championships and I love to play football and cricket!
                 </div>
                 <div className="profile-description-div" style={{ marginTop: "20px", display: "inline-flex" }}>
                     <div data-aos="fade-left" data-aos-delay="100" data-aos-once="true" >
-                        <Tooltip title={`+91-${whatsappNumber}`} placement="bottom">
+                        <Tooltip title={`${whatsappNumber}`} placement="bottom">
                             <a
                                 href={`https://wa.me/${whatsappNumber}`}
                                 target="_blank"

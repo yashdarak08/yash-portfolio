@@ -1,5 +1,5 @@
 export const websiteBaseURL = "";
-export const whatsappNumber = "9422044645";
+export const whatsappNumber = "+919422044645";
 export const callNumber = "(516)-369-0835";
 export const emailId = "yashdarak08@gmail.com";
 

@@ -1,15 +1,29 @@
 :root {
 	--primaryBackground: #161a2b;
 	--primaryColor: #ffffff;
-
 	--boxShadow: 0 10px 10px rgba(0, 0, 0, 0.3);
-
 	--accentColor1: rgba(17, 122, 255, 1);
-
+	--sidebarWidth: 180px; /* Updated to match the new sidebar width */
 }
 
 body {
 	text-align: center;
 	background-color: var(--primaryBackground);
-	font-family: Comic Sans MS
+	font-family: Comic Sans MS;
+	margin: 0;
+	padding: 0;
+}
+
+.main-content {
+	margin-left: var(--sidebarWidth);
+	width: calc(100% - var(--sidebarWidth));
+}
+
+/* Mobile responsive adjustments */
+@media only screen and (max-width: 800px) {
+	.main-content {
+		margin-left: 0;
+		margin-bottom: 60px; /* Space for bottom navbar on mobile */
+		width: 100%;
+	}
 }

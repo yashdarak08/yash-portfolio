@@ -309,60 +309,7 @@
 
 .ant-collapse-header {
     padding: 0px !important;
-  }
-  .ant-collapse-content-box {
+}
+.ant-collapse-content-box {
     padding: 0px !important;
-  }
-
-/* Scrolled state styles */
-.header-scrolled {
-    margin-top: 20px;
-    padding: 0px 10px;
-}
-
-.title-scrolled {
-    font-size: 40px !important;
-    transition: all 0.3s ease-in-out;
-}
-
-.subtitle-scrolled {
-    font-size: 18px !important;
-    transition: all 0.3s ease-in-out;
-}
-
-.description-scrolled {
-    display: none;
-}
-
-.profile-image-scrolled img {
-    max-width: 150px !important;
-    max-height: 150px !important;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Override scrolled state when explicitly at the top of the page */
-body.at-top .header-scrolled {
-    margin-top: 40px;
-}
-
-body.at-top .title-scrolled {
-    font-size: 60px !important;
-}
-
-body.at-top .subtitle-scrolled {
-    font-size: 25px !important;
-}
-
-body.at-top .description-scrolled {
-    display: block;
-}
-
-body.at-top .profile-image-scrolled img {
-    max-width: 300px !important;
-    max-height: 300px !important;
-}
-
-/* Additional style to ensure proper transition */
-#intro {
-    transition: all 0.3s ease-in-out;
 }

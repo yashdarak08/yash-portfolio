@@ -10,7 +10,7 @@ import { GiBrain } from "react-icons/gi";
 import { emailId, whatsappNumber, callNumber, linkedinLink } from "../constants";
 import { FaGithub } from "react-icons/fa";
 
-export default function ProfileIntro({isMobile, isScrolled}) {
+export default function ProfileIntro({isMobile}) {
     const textRef = useRef();
     const ref = React.useRef(null);
 
@@ -29,25 +29,25 @@ export default function ProfileIntro({isMobile, isScrolled}) {
     }, [textRef, isMobile])
 
     return (
-        <div className={`profile-outer-div ${isScrolled ? 'header-scrolled' : ''}`} ref={ref} id="intro">
+        <div className="profile-outer-div" ref={ref} id="intro">
             <div style={{ minWidth: "350px", textAlign: "left" }} data-aos="fade-up-right" data-aos-duration="500">
-                <div style={{ fontSize: "35px" }} className={`profile-title-text ${isScrolled ? 'title-scrolled' : ''}`}>
-                    {isScrolled ? '' : 'Hey there, I\'m'}
+                <div style={{ fontSize: "35px" }} className="profile-title-text">
+                    Hey there, I'm
                 </div>
-                <div className={`profile-title-text ${isScrolled ? 'title-scrolled' : ''}`} style={{lineHeight: '1'}}>Yash Darak</div>
+                <div className="profile-title-text" style={{lineHeight: '1'}}>Yash Darak</div>
                 <div data-aos="zoom-in" data-aos-delay="300">
-                    <span className={`profile-subtitle-text ${isScrolled ? 'subtitle-scrolled' : ''}`} ref={textRef}></span>
+                    <span className="profile-subtitle-text" ref={textRef}></span>
                 </div>
-                <div className={`profile-description-div ${isScrolled ? 'description-scrolled' : ''}`} style={{ marginTop: "20px" }} >
+                <div className="profile-description-div" style={{ marginTop: "20px" }} >
                     I am a curious human. I am currently pursuing my Masters in Applied Mathematics from NYU.
                 </div>
-                <div className={`profile-description-div ${isScrolled ? 'description-scrolled' : ''}`}>
+                <div className="profile-description-div">
                     I am fascianted by Machine Learning, Data Science and Quantitative Research.
                 </div>
-                <div className={`profile-description-div ${isScrolled ? 'description-scrolled' : ''}`}>
+                <div className="profile-description-div">
                     I am very proficient in Algorithmic Thinking and shipping code!
                 </div>
-                <div className={`profile-description-div ${isScrolled ? 'description-scrolled' : ''}`}>
+                <div className="profile-description-div">
                     A few things about me - I am an ABACUS/UCMAS Gold Medallist, a frequent ranker in Indian Sudoku Championships and I love to play football and cricket!
                 </div>
                 <div className="profile-description-div" style={{ marginTop: "20px", display: "inline-flex" }}>
@@ -89,7 +89,7 @@ export default function ProfileIntro({isMobile, isScrolled}) {
                     </div>
                 </div>
             </div>
-            <div data-aos="fade-up-left" data-aos-duration="500" className={isScrolled ? 'profile-image-scrolled' : ''}>
+            <div data-aos="fade-up-left" data-aos-duration="500">
                 <img
                     src="https://avatars.githubusercontent.com/u/126472966?s=400&u=0efefeda99114634f60b415af8491f787519c379&v=4"
                     alt="Yash Darak"

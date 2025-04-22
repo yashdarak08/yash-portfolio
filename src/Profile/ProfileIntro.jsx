@@ -7,7 +7,7 @@ import { FiLinkedin, FiMail } from 'react-icons/fi';
 import { BsWhatsapp } from 'react-icons/bs';
 import { Tooltip } from 'antd';
 import { GiBrain } from "react-icons/gi";
-import { emailId, whatsappNumber, callNumber, linkedinLink } from "../constants";
+import { emailId, whatsappNumber, callNumber, linkedinLink, githubLink } from "../constants";
 import { FaGithub } from "react-icons/fa";
 
 export default function ProfileIntro({isMobile}) {
@@ -84,6 +84,18 @@ export default function ProfileIntro({isMobile}) {
                                 style={{ marginLeft: "0px" }}
                             >
                                 <FiLinkedin />
+                            </a>
+                        </Tooltip>
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="100" data-aos-once="true" >
+                        <Tooltip title="Github" placement="bottom">
+                            <a
+                                href={githubLink}
+                                target="_blank"
+                                className="profile-link-btn profile-btn-gradient-border"
+                                style={{ marginLeft: "0px" }}
+                            >
+                                <FaGithub />
                             </a>
                         </Tooltip>
                     </div>

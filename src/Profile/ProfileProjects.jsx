@@ -2,50 +2,55 @@ import React from 'react'
 import ProjectCard from './ProjectCard'
 import { GiMeshNetwork } from "react-icons/gi";
 import { CiViewTable } from "react-icons/ci";
-import { SiTensorflow, SiHuggingface, SiMlflow, SiPrometheus, SiGrafana, SiKubernetes, SiNumpy, SiGraphql, SiCplusplus, SiNvidia, SiJupyter, SiScipy, SiScikitlearn, SiNeo4J, SiPytorch, SiCss3, SiFastapi, SiHtml5, SiMongodb, SiMysql, SiPython, SiReact, SiRedux } from "react-icons/si";
+import { SiTensorflow, SiMlflow, SiHuggingface, SiTerraform, SiAmazonec2, SiPrometheus, SiGrafana, SiKubernetes, SiNumpy, SiGraphql, SiCplusplus, SiNvidia, SiJupyter, 
+         SiScipy, SiScikitlearn, SiNeo4J, SiPytorch, SiCss3, SiFastapi, SiHtml5, SiMongodb, SiMysql, SiPython, SiReact, SiRedux, SiStreamlit } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
 import { DiSqllite } from "react-icons/di";
 import { FaGamepad, FaDocker, FaAws } from "react-icons/fa";
 import { MdOutlineSoupKitchen } from "react-icons/md";
 import Timeline from '@mui/lab/Timeline';
-import { binaryTreeGithubURL, bstVisulizationURL, heapVisulizationURL, mathsyraBackendURL, mathsyraFrontendURL } from '../constants';
+import { binaryTreeGithubURL, graphnnGithubURL, interestRatesGithubURL, biAssistantGithubURL, movieRecommenderGithubURL, twitterSentimentGithubURL, 
+         boardGameRLGithubURL, quantTradingGithubURL, bayesianCNNGithubURL } from '../constants';
+
 
 
 export default function ProfileProjects({isMobile}) {
-    const imagesDashboardData = {
-        title: "Images Dashboard",
-        id: "images-dashboard",
-        oppositeContent: (<>Continuous Development <br /> Industry Project</>),
+    
+    const electionSentimentData = {
+        title: "Twitter Sentiment Analysis (2024 U.S. Election)",
+        id: "election-sentiment-nlp",
+        oppositeContent: (<>NLP + Financial Signals<br /> Social Media Analytics</>),
     
         items: [
             {
                 type: "text",
-                content: "Images Dashboard is a CCTV image capturing and auditing platform with integration of AI to detect common objects."
+                content: "Built a sentiment analysis pipeline to analyze 200,000+ tweets during the 2024 U.S. Presidential Election, focusing on public opinion and market response."
             },
             {
                 type: "text",
-                content: (
-                    <div>
-                        I developed this during my internship at Integrated active monitoring Pvt Ltd (
-                        <a href="https://smartiam.in/" target="_blank">IAM</a>)
-                    </div>
-                ),
+                content: "Utilized VADER and Naive Bayes classifiers to categorize tweets as positive, negative, or neutral, identifying candidate-level sentiment bias."
             },
             {
                 type: "text",
-                content: (<i>( Product related Blog, Video and other informational content to be added soon. )</i>)
+                content: "Applied Chi-Square feature selection to improve classification performance and reduce dimensionality of the tweet feature space."
+            },
+            {
+                type: "text",
+                content: "Correlated sentiment trends with financial indicators such as the S&P 500 and Russell 2000 to uncover a 30% spike in market volatility during peak sentiment periods."
             },
             {
                 type: "collapse",
                 title: "Roles / Responsibilities",
-                id: "images-dashboard-roles",
+                id: "election-sentiment-nlp-roles",
                 items: [
                     {
                         type: "list",
                         content: [
-                            "Designing of the frontend code architecture (which includes setting up the project and donfiguring advanced state management and routing).",
-                            "Development and maintainence of the codebase.",
-                            "Ticketing software backend architecture and api integration",
+                            "Collected and preprocessed 200,000+ tweets using Pandas.",
+                            "Built sentiment classifiers using VADER and Naive Bayes.",
+                            "Used Chi-Square test for feature importance and selection.",
+                            "Visualized sentiment dynamics and political candidate bias.",
+                            "Performed financial correlation analysis to connect sentiment with volatility metrics."
                         ],
                     },
                 ],
@@ -54,15 +59,87 @@ export default function ProfileProjects({isMobile}) {
                 type: "chips",
                 title: "Tech Stack",
                 content: [
-                    { text: "React", icon: <SiReact className="timeline-tech-icon" /> },
-                    { text: "Redux", icon: <SiRedux className="timeline-tech-icon" /> },
-                    { text: "FastAPI", icon: <SiFastapi className="timeline-tech-icon" /> },
-                    { text: "MySQL", icon: <GrMysql className="timeline-tech-icon" /> },
-                    { text: "MongoDB", icon: <SiMongodb className="timeline-tech-icon" /> },
+                    { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "NLTK", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "Pandas", icon: <CiViewTable className="timeline-tech-icon" /> },
+                    { text: "Scikit-learn", icon: <SiScikitlearn className="timeline-tech-icon" /> },
+                    { text: "VADER", icon: <SiPython className="timeline-tech-icon" /> }
                 ]
             },
+            {
+                type: "links",
+                content: [
+                    { text: "Github", link: twitterSentimentGithubURL },
+                ]
+            }
         ]
     }
+    
+
+    const llmBiAssistantData = {
+        title: "LLM-powered Business Intelligence Assistant",
+        id: "llm-bi-rag-dashboard",
+        oppositeContent: (<>Real-time Document Intelligence<br /> Powered by LLMs + RAG</>),
+    
+        items: [
+            {
+                type: "text",
+                content: "Built a production-grade Business Intelligence Assistant using a Retrieval-Augmented Generation (RAG) pipeline for real-time decision support."
+            },
+            {
+                type: "text",
+                content: "Integrated HuggingFace Transformers with FAISS for semantic search and document chunking to enable efficient information retrieval from business files."
+            },
+            {
+                type: "text",
+                content: "Deployed APIs via FastAPI for LLM-powered Q&A over enterprise documents, with latency-optimized endpoints."
+            },
+            {
+                type: "text",
+                content: "Developed a responsive Streamlit dashboard for interactive querying and visualization of insights."
+            },
+            {
+                type: "text",
+                content: "Enabled real-time system health and latency monitoring using Prometheus, ensuring consistent performance."
+            },
+            {
+                type: "collapse",
+                title: "Roles / Responsibilities",
+                id: "llm-bi-rag-dashboard-roles",
+                items: [
+                    {
+                        type: "list",
+                        content: [
+                            "Designed the full RAG pipeline using FAISS and Transformers.",
+                            "Built backend APIs for LLM-powered semantic search using FastAPI.",
+                            "Developed front-end Streamlit dashboard for user interaction.",
+                            "Deployed Prometheus-based metrics monitoring for real-time usage analysis.",
+                            "Optimized the assistant for latency and accuracy tradeoffs in production settings."
+                        ],
+                    },
+                ],
+            },
+            {
+                type: "chips",
+                title: "Tech Stack",
+                content: [
+                    { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "FastAPI", icon: <SiFastapi className="timeline-tech-icon" /> },
+                    { text: "Transformers", icon: <SiHuggingface className="timeline-tech-icon" /> },
+                    { text: "Streamlit", icon: <SiStreamlit className="timeline-tech-icon" /> },
+                    { text: "Prometheus", icon: <SiPrometheus className="timeline-tech-icon" /> },
+                    { text: "Docker", icon: <FaDocker className="timeline-tech-icon" /> }
+                ]
+            },
+            {
+                type: "links",
+                content: [
+                    { text: "Github", link: biAssistantGithubURL },
+                ]
+            }
+        ]
+    }
+    
 
     const graphDLData = {
         title: "Graph Deep Learning (GNNs)",
@@ -115,13 +192,78 @@ export default function ProfileProjects({isMobile}) {
                     { text: "NetworkX", icon: <GiMeshNetwork className="timeline-tech-icon" /> },
                 ]
             },
+            {
+                type: "links",
+                content: [
+                    { text: "Github", link: graphnnGithubURL }
+                ]
+            }
         ]
     }
+
+    const interestRateModelingData = {
+        title: "Quantitative Modelling: Interest Rate Derivatives",
+        id: "interest-rate-derivatives-modeling",
+        oppositeContent: (<>Advanced Financial Modeling<br /> Academic + Independent Research</>),
+    
+        items: [
+            {
+                type: "text",
+                content: "Built quantitative models for pricing interest rate derivatives using the Vasicek and CIR stochastic frameworks."
+            },
+            {
+                type: "text",
+                content: "Implemented both finite-difference PDE solvers and Monte Carlo simulations (10,000+ paths) to evaluate derivative prices and compute Value at Risk (VaR) and Conditional VaR (CVaR)."
+            },
+            {
+                type: "text",
+                content: "Conducted rigorous statistical validation using diagnostic tests such as Jarque-Bera, Ljung-Box, and Levene’s test to assess model robustness."
+            },
+            {
+                type: "text",
+                content: "Performed stress testing to simulate extreme rate shift scenarios and analyze tail risk exposures under stochastic interest rate conditions."
+            },
+            {
+                type: "collapse",
+                title: "Roles / Responsibilities",
+                id: "interest-rate-derivatives-modeling-roles",
+                items: [
+                    {
+                        type: "list",
+                        content: [
+                            "Implemented Vasicek and CIR short-rate models for bond and option pricing.",
+                            "Applied Monte Carlo methods for probabilistic risk estimation.",
+                            "Developed finite-difference solvers for PDE-based pricing approaches.",
+                            "Back-tested model performance with historical rate data.",
+                            "Validated assumptions with econometric statistical tests."
+                        ],
+                    },
+                ],
+            },
+            {
+                type: "chips",
+                title: "Tech Stack",
+                content: [
+                    { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "NumPy", icon: <SiNumpy className="timeline-tech-icon" /> },
+                    { text: "SciPy", icon: <SiScipy className="timeline-tech-icon" /> },
+                    { text: "Statsmodels", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "Pandas", icon: <CiViewTable className="timeline-tech-icon" /> },
+                ]
+            },
+            {
+                type: "links",
+                content: [
+                    { text: "Github", link: interestRatesGithubURL },
+                ]
+            }
+        ]
+    }    
 
     const bayesianCNNData = {
         title: "Bayesian CNN",
         id: "bayesian-cnn",
-        oppositeContent: (<>Academic Research <br /> Paper Submission to IJCNN 2025</>),
+        oppositeContent: (<>Academic Research <br /> Paper Accepted at IJCNN 2025</>),
     
         items: [
             {
@@ -134,7 +276,7 @@ export default function ProfileProjects({isMobile}) {
             },
             {
                 type: "text",
-                content: "Submitted results to the International Joint Conference on Neural Networks (IJCNN), 2025."
+                content: "Paper Accepted at the International Joint Conference on Neural Networks (IJCNN), 2025."
             },
             {
                 type: "collapse",
@@ -164,6 +306,12 @@ export default function ProfileProjects({isMobile}) {
                     { text: "Scikit-learn", icon: <SiScikitlearn className="timeline-tech-icon" /> },
                 ]
             },
+            {
+                type: "links",
+                content: [
+                    { text: "Github", link: bayesianCNNGithubURL }
+                ]
+            }
         ]
     }
 
@@ -212,6 +360,12 @@ export default function ProfileProjects({isMobile}) {
                     { text: "OpenAI Gym", icon: <FaGamepad className="timeline-tech-icon" /> }, // used OpenCV icon as Gym doesn’t have one
                 ]
             },
+            {
+                type: "links",
+                content: [
+                    { text: "Github", link: boardGameRLGithubURL },
+                ]
+            }
         ]
     }
 
@@ -274,7 +428,7 @@ export default function ProfileProjects({isMobile}) {
     const ragSystemData = {
         title: "RAG",
         id: "rag-narrative-knowledge",
-        oppositeContent: (<>Group Project - RAG Exploration <br /> Applied NLP & Knowledge Graphs</>),
+        oppositeContent: (<>RAG Exploration <br /> Applied NLP & Knowledge Graphs</>),
 
         items: [
             {
@@ -321,71 +475,6 @@ export default function ProfileProjects({isMobile}) {
                     { text: "MongoDB", icon: <SiMongodb className="timeline-tech-icon" /> },
                     { text: "NumPy", icon: <SiNumpy className="timeline-tech-icon" /> },
                     { text: "GraphQL", icon: <SiGraphql className="timeline-tech-icon" /> },
-                ]
-            },
-        ]
-    }
-
-    const mlopsMovieRecommendationData = {
-        title: "MLOps - Cloud Native Recommendor System",
-        id: "mlops-movie-recommendation",
-        oppositeContent: (<>Academic Project <br /> MLOps & Systems Engineering</>),
-
-        items: [
-            {
-                type: "text",
-                content: "Engineered a scalable, cloud-native movie recommendation system with a full-fledged MLOps pipeline to automate model development, deployment, and monitoring."
-            },
-            {
-                type: "text",
-                content: "Utilized MLFlow for experiment tracking, artifact management, and model versioning, ensuring reproducibility across environments."
-            },
-            {
-                type: "text",
-                content: "Implemented distributed hyperparameter tuning using Ray on AWS EC2 clusters, reducing search time by 40% for optimal recommendation models."
-            },
-            {
-                type: "text",
-                content: "Containerized the application using Docker and deployed it on AWS EKS (Elastic Kubernetes Service), enabling auto-scaling to manage dynamic traffic patterns efficiently."
-            },
-            {
-                type: "text",
-                content: "Integrated Prometheus and Grafana dashboards for real-time monitoring of model latency, system health, and user interaction metrics."
-            },
-            {
-                type: "text",
-                content: "Processed over 500K+ user interactions daily, with the system dynamically scaling to handle 5x traffic spikes while maintaining sub-100ms response times."
-            },
-            {
-                type: "collapse",
-                title: "Roles / Responsibilities",
-                id: "mlops-movie-recommendation-roles",
-                items: [
-                    {
-                        type: "list",
-                        content: [
-                            "Designed an end-to-end MLOps pipeline for recommendation system development and deployment.",
-                            "Implemented experiment tracking and model management with MLFlow.",
-                            "Set up Ray on AWS for distributed hyperparameter optimization, parallelizing training across multiple EC2 instances.",
-                            "Developed Docker containers and orchestrated deployments on AWS EKS using Kubernetes.",
-                            "Configured Prometheus for metric collection and Grafana for visualization and alerting.",
-                            "Optimized system latency and scalability, achieving sub-100ms response times under peak loads."
-                        ],
-                    },
-                ],
-            },
-            {
-                type: "chips",
-                title: "Tech Stack",
-                content: [
-                    { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
-                    { text: "PyTorch", icon: <SiPytorch className="timeline-tech-icon" /> },
-                    { text: "Docker", icon: <FaDocker className="timeline-tech-icon" /> },
-                    { text: "Kubernetes", icon: <SiKubernetes className="timeline-tech-icon" /> },
-                    { text: "AWS", icon: <FaAws className="timeline-tech-icon" /> },
-                    { text: "MLFlow", icon: <SiMlflow className="timeline-tech-icon" /> },
-                    { text: "Prometheus", icon: <SiPrometheus className="timeline-tech-icon" /> },
-                    { text: "Grafana", icon: <SiGrafana className="timeline-tech-icon" /> },
                 ]
             },
         ]
@@ -491,6 +580,12 @@ export default function ProfileProjects({isMobile}) {
                     { text: "Jupyter", icon: <SiJupyter className="timeline-tech-icon" /> },
                 ]
             },
+            {
+                type: "links",
+                content: [
+                    { text: "Github", link: quantTradingGithubURL },
+                ]
+            }
         ]
     }
 
@@ -554,78 +649,72 @@ export default function ProfileProjects({isMobile}) {
         ]
     }
 
-    
-    const mathsyraData = {
-        title: "Mathsyra",
-        id: "mathsyra",
-        oppositeContent: "April 2021",
+    const movieRecommenderData = {
+        title: "Movie Recommendation System (MLOps)",
+        id: "movie-recommender-mlops",
+        oppositeContent: (<>Academic Project<br /> Cloud-Native ML Pipeline<br /> Real-Time Scalable Deployment</>),
     
         items: [
             {
                 type: "text",
-                content: "Mathsyra is a web application for students to learn the concepts of mathematics in an innovative way with Indian cultural themed UI and quizzes."
+                content: "Designed a production-grade movie recommendation system using an end-to-end MLOps pipeline optimized for cloud infrastructure."
+            },
+            {
+                type: "text",
+                content: "Used MLFlow for experiment tracking and model versioning, while provisioning infrastructure using Terraform."
+            },
+            {
+                type: "text",
+                content: "Deployed scalable inference services on AWS EC2 using Docker & Kubernetes, with real-time monitoring through Prometheus and Grafana."
+            },
+            {
+                type: "text",
+                content: "Implemented distributed hyperparameter tuning with Ray and multi-GPU training via PyTorch, processing over 500K+ daily user interactions."
+            },
+            {
+                type: "text",
+                content: "Enabled sub-100ms latency even under 5x traffic spikes and performed inference benchmarking using custom Triton kernels under various quantization and batching configurations."
             },
             {
                 type: "collapse",
-                title: "Objective",
-                id: "mathsyra-objective",
+                title: "Roles / Responsibilities",
+                id: "movie-recommender-mlops-roles",
                 items: [
                     {
                         type: "list",
                         content: [
-                            "This project was created for Toycathon 2021."
-                        ]
-                    }
-                ]
-            },
-            {
-                type: "collapse",
-                title: "Key Features",
-                id: "mathsyra-key-features",
-                items: [
-                    {
-                        type: "list",
-                        content: [
-                            "Well Designed Interface and User Experience",
-                            "Perfectly categorized modules and quizzes.",
-                            "Interactive Blogs related to vedic maths to Understand the concepts and applications.",
-                            "Quiz after every module to test your knowledge."
-                        ]
+                            "Designed and deployed MLOps pipeline with full CI/CD automation.",
+                            "Built distributed training setup using PyTorch + Ray on AWS.",
+                            "Implemented real-time metrics monitoring with Prometheus-Grafana.",
+                            "Benchmarked inference latency with custom Triton backends.",
+                            "Handled traffic surges with scalable Dockerized microservices on Kubernetes."
+                        ],
                     },
-                ]
-            },
-            {
-                type: "collapse",
-                title: "Achievements",
-                id: "mathsyra-achievements",
-                items: [
-                    {
-                        type: "list",
-                        content: [
-                            "Finalist in Toycathon 2021."
-                        ]
-                    },
-                ]
+                ],
             },
             {
                 type: "chips",
-                title: "Tech/Learn Stack:",
+                title: "Tech Stack",
                 content: [
-                    { text: "FastAPI", icon: <SiFastapi className="timeline-tech-icon" /> },
-                    { text: "React", icon: <SiReact className="timeline-tech-icon" /> },
-                    { text: "SQL lite", icon: <DiSqllite className="timeline-tech-icon" /> },
+                    { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "PyTorch", icon: <SiPytorch className="timeline-tech-icon" /> },
+                    { text: "Docker", icon: <FaDocker className="timeline-tech-icon" /> },
+                    { text: "Kubernetes", icon: <SiKubernetes className="timeline-tech-icon" /> },
+                    { text: "AWS", icon: <FaAws className="timeline-tech-icon" /> },
+                    { text: "MLFlow", icon: <SiMlflow className="timeline-tech-icon" /> },
+                    { text: "Prometheus", icon: <SiPrometheus className="timeline-tech-icon" /> },
+                    { text: "Grafana", icon: <SiGrafana className="timeline-tech-icon" /> },
                 ]
             },
             {
                 type: "links",
                 content: [
-                    { text: "Frontend", link: mathsyraFrontendURL },
-                    { text: "Backend", link: mathsyraBackendURL },
+                    { text: "Github", link: movieRecommenderGithubURL },
                 ]
-            }    
+            }
         ]
     }
-    
+
     
     const binaryTreeData = {
         title: "Binary Tree Visualizer",
@@ -658,8 +747,6 @@ export default function ProfileProjects({isMobile}) {
                 type: "links",
                 content: [
                     { text: "Github", link: binaryTreeGithubURL },
-                    { text: "Heap", link: heapVisulizationURL },
-                    { text: "Binary Search Tree", link: bstVisulizationURL },
                 ]
             }
         ]
@@ -669,16 +756,17 @@ export default function ProfileProjects({isMobile}) {
     const projects = [
         graphDLData,
         bayesianCNNData,
-        llmSummarizationData,
+        interestRateModelingData,
+        movieRecommenderData,
         rlBoardGamesData,
+        electionSentimentData,
+        llmBiAssistantData,
         bayesianOptimizationData,
         ragSystemData,
-        mlopsMovieRecommendationData,
         pinnFnoData,
+        llmSummarizationData,
         rnnLstmTradingData,
-        imagesDashboardData,
         binaryTreeData,
-        mathsyraData,
     ]
 
     // useEffect(() => {
@@ -695,7 +783,9 @@ export default function ProfileProjects({isMobile}) {
             </div>
             <div className="profile-title-div" style={{textAlign: 'center'}} >
                 <span className="profile-description-div" style={{marginTop: "0px", fontSize: '15px'}}>
-                    My projects ordered by complexity
+                    I have worked on a variety of projects, ranging from academic research to personal projects.
+                    <br />
+                    All of them are in the field of Machine Learning, Data Science and Modelling.
                 </span>
             </div>
             <Timeline position="alternate">

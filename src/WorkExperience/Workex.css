@@ -1,0 +1,153 @@
+.projects-container {
+    background-color: var(--primaryBackground);
+    min-height: 100vh;
+    color: var(--primaryColor);
+    padding: 30px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .projects-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 15px;
+    color: #fff;
+    text-decoration: none;
+    border: 2px double transparent;
+    background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), 
+                      radial-gradient(circle at left top, rgb(23, 226, 74), rgb(10, 101, 238));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 0;
+  }
+  
+  .back-button:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+  
+  .back-button svg {
+    margin-right: 8px;
+  }
+  
+  .projects-title {
+    background: linear-gradient(to right, rgb(23, 226, 74), rgb(10, 101, 238));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    font-weight: 700;
+    text-shadow: 0 0 80px rgb(192 219 255 / 35%), 0 0 32px rgb(65 120 255 / 24%);
+    text-align: center;
+    width: 100%;
+  }
+  
+  .projects-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .project-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(20, 10, 10, 0.34);
+    border-radius: 12px;
+    box-shadow: 5px 5px 115px -14px black;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .project-section h2 {
+    background: linear-gradient(to right, rgb(23, 226, 74), rgb(10, 101, 238));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .project-section p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  /* Mobile responsiveness */
+  @media only screen and (max-width: 800px) {
+    .projects-container {
+      padding: 15px;
+    }
+    
+    .projects-header {
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+    
+    .back-button {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    
+    .projects-title {
+      font-size: 32px;
+    }
+  }
+
+/* grid container */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    user-select: none; /* prevent text selection while dragging */
+  }
+  
+  /* individual card */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 12px;
+    cursor: grab;
+  }
+  
+  .card:active {
+    cursor: grabbing;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .card-title {
+    margin: 8px 0 0;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  /* full‑screen overlay */
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  

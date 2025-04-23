@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FaHome, FaTools, FaProjectDiagram, FaHeart, FaBriefcase } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './SidebarCSS.css';
@@ -9,25 +9,8 @@ export default function Sidebar() {
     const navigate = useNavigate();
     const isHomePage = location.pathname === '/' || location.pathname === '';
     
-    // Check for hash in the URL when component mounts or location changes
-    useEffect(() => {
-        if (location.hash) {
-            // Remove the # from the hash
-            const sectionId = location.hash.substring(1);
-            setActiveSection(sectionId);
-            
-            // Small delay to ensure the DOM is fully loaded
-            setTimeout(() => {
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 300);
-        }
-    }, [location]);
-    
-    // Function to handle section navigation
-    const scrollToSection = (sectionId) => {
+    // Memoize the scrollToSection function to prevent recreating on each render
+    const scrollToSection = useCallback((sectionId) => {
         if (isHomePage) {
             const section = document.getElementById(sectionId);
             if (section) {
@@ -41,45 +24,67 @@ export default function Sidebar() {
             // If we're not on the homepage, navigate to the homepage with the hash
             navigate(`/#${sectionId}`);
         }
-    };
+    }, [isHomePage, navigate]);
     
-    // Track scroll position when on homepage
+    // Check for hash in the URL when component mounts or location changes
+    useEffect(() => {
+        if (location.hash) {
+            // Remove the # from the hash
+            const sectionId = location.hash.substring(1);
+            setActiveSection(sectionId);
+            
+            // Small delay to ensure the DOM is fully loaded
+            const timer = setTimeout(() => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 300);
+            
+            return () => clearTimeout(timer);
+        }
+    }, [location.hash]);
+    
+    // Track scroll position with throttling when on homepage
     useEffect(() => {
         if (!isHomePage) return;
         
+        let ticking = false;
+        
         const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            
-            // Get all section elements
-            const intro = document.getElementById('intro');
-            const skills = document.getElementById('skills');
-            const projects = document.getElementById('projects');
-            
-            // Calculate positions
-            const introPos = intro ? intro.offsetTop : 0;
-            const skillsPos = skills ? skills.offsetTop : 0;
-            const projectsPos = projects ? projects.offsetTop : 0;
-            
-            // Set active section based on scroll position
-            if (scrollPosition < skillsPos - 100) {
-                setActiveSection('intro');
-            } else if (scrollPosition < projectsPos - 100) {
-                setActiveSection('skills');
-            } else {
-                setActiveSection('projects');
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollPosition = window.scrollY;
+                    
+                    // Get all section elements
+                    const intro = document.getElementById('intro');
+                    const skills = document.getElementById('skills');
+                    const projects = document.getElementById('projects');
+                    
+                    // Calculate positions with null checks
+                    const introPos = intro ? intro.offsetTop : 0;
+                    const skillsPos = skills ? skills.offsetTop : 0;
+                    const projectsPos = projects ? projects.offsetTop : 0;
+                    
+                    // Set active section based on scroll position
+                    if (scrollPosition < skillsPos - 100) {
+                        setActiveSection('intro');
+                    } else if (scrollPosition < projectsPos - 100) {
+                        setActiveSection('skills');
+                    } else {
+                        setActiveSection('projects');
+                    }
+                    
+                    ticking = false;
+                });
+                
+                ticking = true;
             }
         };
         
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, [isHomePage]);
-    
-    // Function to handle direct navigation links, ensuring they work on first click
-    const handleLinkClick = (e, path) => {
-        // No need to prevent default as React Router's Link handles this
-        // Just make sure we're forcing a navigation
-        navigate(path);
-    };
     
     return (
         <div className="sidebar">
@@ -115,21 +120,13 @@ export default function Sidebar() {
                                     <span className="sidebar-text">Projects</span>
                                 </li>
                                 <li>
-                                    <Link 
-                                        to="/passions" 
-                                        className="sidebar-link"
-                                        onClick={(e) => handleLinkClick(e, '/passions')}
-                                    >
+                                    <Link to="/passions" className="sidebar-link">
                                         <FaHeart className="sidebar-icon" />
                                         <span className="sidebar-text">Passions</span>
                                     </Link>
                                 </li>
                                 <li>    
-                                    <Link 
-                                        to="/workex" 
-                                        className="sidebar-link"
-                                        onClick={(e) => handleLinkClick(e, '/workex')}
-                                    >
+                                    <Link to="/workex" className="sidebar-link">
                                         <FaBriefcase className="sidebar-icon" />
                                         <span className="sidebar-text">Work Ex</span>
                                     </Link>
@@ -139,31 +136,19 @@ export default function Sidebar() {
                             // Navigation for other pages
                             <>
                                 <li>
-                                    <Link 
-                                        to="/" 
-                                        className="sidebar-link"
-                                        onClick={(e) => handleLinkClick(e, '/')}
-                                    >
+                                    <Link to="/" className="sidebar-link">
                                         <FaHome className="sidebar-icon" />
                                         <span className="sidebar-text">Home</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link 
-                                        to="/passions" 
-                                        className={location.pathname === '/passions' ? 'sidebar-link active' : 'sidebar-link'}
-                                        onClick={(e) => handleLinkClick(e, '/passions')}
-                                    >
+                                    <Link to="/passions" className={location.pathname === '/passions' ? 'sidebar-link active' : 'sidebar-link'}>
                                         <FaHeart className="sidebar-icon" />
                                         <span className="sidebar-text">Passions</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link 
-                                        to="/workex" 
-                                        className={location.pathname === '/workex' ? 'sidebar-link active' : 'sidebar-link'}
-                                        onClick={(e) => handleLinkClick(e, '/workex')}
-                                    >
+                                    <Link to="/workex" className={location.pathname === '/workex' ? 'sidebar-link active' : 'sidebar-link'}>
                                         <FaBriefcase className="sidebar-icon" />
                                         <span className="sidebar-text">Work Ex</span>
                                     </Link>

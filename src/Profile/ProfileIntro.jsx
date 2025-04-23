@@ -1,22 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import { init } from "ityped";
-import { SiCplusplus, SiCss3, SiFastapi, SiFirebase, SiFlask, SiGit, SiHtml5, SiJavascript, SiJson, SiMysql, SiPython, SiReact } from "react-icons/si";
-import { GrMysql } from 'react-icons/gr';
-import { AiOutlineLinkedin, AiOutlineSolution, AiOutlineTeam } from 'react-icons/ai';
 import { FiLinkedin, FiMail } from 'react-icons/fi';
 import { BsWhatsapp } from 'react-icons/bs';
 import { Tooltip } from 'antd';
-import { GiBrain } from "react-icons/gi";
-import { emailId, whatsappNumber, callNumber, linkedinLink, githubLink } from "../constants";
 import { FaGithub } from "react-icons/fa";
+import { emailId, whatsappNumber, linkedinLink, githubLink } from "../constants";
 
-export default function ProfileIntro({isMobile}) {
+// Use React.memo to prevent unnecessary re-renders
+const ProfileIntro = memo(({ isMobile }) => {
     const textRef = useRef();
     const ref = React.useRef(null);
 
     useEffect(() => {
-        // This is for the typing animation
-        if(textRef.current){
+        // Typing animation - only run when dependencies change
+        if (textRef.current) {
             init(textRef.current, {
                 showCursor: true,
                 backDelay: 1500,
@@ -25,8 +22,8 @@ export default function ProfileIntro({isMobile}) {
                     ? ["Math Geek.", "Sudoku Enthusiast.", "Problem Solver.", "Logician."]
                     : ["Math Geek. Sudoku Enthusiast. Problem Solver. Logician."]),
             });
-        }         
-    }, [textRef, isMobile])
+        }
+    }, [textRef, isMobile]);
 
     return (
         <div className="profile-outer-div" ref={ref} id="intro">
@@ -78,7 +75,7 @@ export default function ProfileIntro({isMobile}) {
                     <div data-aos="fade-left" data-aos-delay="300" data-aos-once="true" >
                         <Tooltip title="LinkedIn" placement="bottom">
                             <a
-                                href="https://www.linkedin.com/in/yashdarak08/"
+                                href={linkedinLink}
                                 target="_blank"
                                 className="profile-link-btn profile-btn-gradient-border"
                                 style={{ marginLeft: "0px" }}
@@ -106,8 +103,12 @@ export default function ProfileIntro({isMobile}) {
                     src="https://avatars.githubusercontent.com/u/126472966?s=400&u=0efefeda99114634f60b415af8491f787519c379&v=4"
                     alt="Yash Darak"
                     className="proflie-photo-img"
+                    width="300" 
+                    height="300"
                 />
             </div>
         </div>
     );
-}
+});
+
+export default ProfileIntro;

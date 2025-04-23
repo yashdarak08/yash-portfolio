@@ -1,5 +1,4 @@
-import React from "react";
-import { Helmet } from "react-helmet";
+import React, { useState, useRef, memo, useCallback } from "react";
 import { HiOutlineCode } from "react-icons/hi";
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { GiBrain } from "react-icons/gi";
@@ -19,33 +18,27 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import { Collapse } from 'antd';
 const { Panel } = Collapse;
 
+// Using React.memo to prevent unnecessary re-renders
+const ProjectCard = memo(({data={}, id=data?.id, align="left", defaultExpanded=[], aosAnimation="zoom-out"}) => {
+    const [collapseKeys, setCollapseKeys] = useState(defaultExpanded);
+    const ref = useRef(null);
 
-export default function ProjectCard({data={}, id=data?.id, align="left", defaultExpanded=[], aosAnimation="zoom-out"}) {
-    const [collapseKeys, setCollapseKeys] = React.useState(defaultExpanded);
-    const ref = React.useRef(null);
-    // useEffect(() => {
-    //     if (isInViewport && window.location.hash !== `#${id}`) {
-    //         // setCollapseKeys(defaultExpanded);
-    //         // push the #id to the url
-    //         // replace
-    //         window.history.replaceState(null, null, `#${id}`);
-    //     }
-    // }, [isInViewport]);
-
-
-    const handleKeysChange = (keys) => {
+    // Memoize the handler to prevent recreating on each render
+    const handleKeysChange = useCallback((keys) => {
         setCollapseKeys(keys);
-    }
+    }, []);
 
-    const textItem = (item) => (
+    // Text item component - memoized for performance
+    const textItem = useCallback((item) => (
         <div className="timeline-description-div">
             <span className="timeline-description-text">
                 {item.content}
             </span>
         </div>
-    )
+    ), []);
 
-    const listItems = (item) => (
+    // List items component - memoized for performance
+    const listItems = useCallback((item) => (
         <ul className="timeline-list-ul">
             {item.content.map((listItem, index) => (
                 <li className="timeline-list-item-li" key={index}>
@@ -55,9 +48,10 @@ export default function ProjectCard({data={}, id=data?.id, align="left", default
                 </li>
             ))}
         </ul>
-    )
+    ), []);
 
-    const chipsItem = (item) => (
+    // Chips item component - memoized for performance
+    const chipsItem = useCallback((item) => (
         <div className="timeline-description-div" style={{marginTop: '10px'}}>
             <span className="timeline-description-text" style={{display: 'inline-flex', alignItems: 'center'}}>
                 <span style={{minWidth: '80px', display: 'block'}}>{item.title}:</span>
@@ -71,9 +65,10 @@ export default function ProjectCard({data={}, id=data?.id, align="left", default
                 </div>
             </span>
         </div>
-    )
+    ), []);
 
-    const linksItem = (item) => (
+    // Links item component - memoized for performance
+    const linksItem = useCallback((item) => (
         <div className={"timeline-description-div " + (align === "right" ? "timeline-align-right" : "")} style={{ marginTop: "10px" }} 
             data-aos="fade-up" data-aos-delay={0} data-aos-once="true" data-aos-anchor={`#${id}`}
             >
@@ -83,9 +78,10 @@ export default function ProjectCard({data={}, id=data?.id, align="left", default
                 </a>
             ))}
         </div>
-    )
+    ), [align, id]);
 
-    const collapseItem = (item) => (
+    // Collapse item component - memoized for performance
+    const collapseItem = useCallback((item) => (
         <Collapse
             key={item.id}
             onChange={handleKeysChange}
@@ -106,17 +102,16 @@ export default function ProjectCard({data={}, id=data?.id, align="left", default
                 showArrow={false}
                 style={{padding: '0px'}}
                 className="timeline-collapse-panel"
-                
             >
                 <div className="timeline-collapse-item-outer">
                     {renderData(item.items)}
                 </div>
             </Panel>
         </Collapse>
-    )
+    ), [collapseKeys, handleKeysChange]);
 
-
-    const renderData = (d) => {
+    // Render data based on item type - memoized for performance
+    const renderData = useCallback((d) => {
         return d.map((item) => {
             switch(item.type) {
                 case "text": return textItem(item);
@@ -126,13 +121,17 @@ export default function ProjectCard({data={}, id=data?.id, align="left", default
                 case "collapse": return collapseItem(item);
                 default: return null;
             }
-        })
-    }
+        });
+    }, [textItem, listItems, chipsItem, linksItem, collapseItem]);
 
+    // Handler for timeline title click - memoized for performance
+    const handleTitleClick = useCallback(() => {
+        window.history.replaceState(null, null, `#${id}`);
+    }, [id]);
 
     return (
-        <TimelineItem key={id} id={id} ref={ref} >
-            <TimelineOppositeContent sx={{ m: "auto 0" }} align="right" variant="body2" >
+        <TimelineItem key={id} id={id} ref={ref}>
+            <TimelineOppositeContent sx={{ m: "auto 0" }} align="right" variant="body2">
                 <span className="timeline-item-date" data-aos={`fade-${align === "right" ? "left" : "right"}`} data-aos-duration="1000" data-aos-delay="100" data-aos-once="true">
                     {data.oppositeContent}
                 </span>
@@ -144,7 +143,6 @@ export default function ProjectCard({data={}, id=data?.id, align="left", default
                 </TimelineDot>
                 <TimelineConnector />
             </TimelineSeparator>
-            {/* style={isRightAligned ? { display: "inline-flex", justifyContent: "right" } : {}} */}
             <TimelineContent sx={{ py: "12px", px: 2 }} style={{display: 'inline-flex', justifyContent: align === "right" ? "right" : "" }}>
                 <div 
                     className="timeline-content-div" 
@@ -152,19 +150,21 @@ export default function ProjectCard({data={}, id=data?.id, align="left", default
                     data-aos-duration="1000" 
                     data-aos-delay="100" 
                     data-aos-once="true"
-                    >
+                >
                     <div 
-                        className={"timeline-title-div" + (align === "right" && "timeline-align-right") } 
+                        className={"timeline-title-div" + (align === "right" ? " timeline-align-right" : "")} 
                         id={id} 
                         style={{cursor: 'pointer'}}
-                        onClick={() => {window.history.replaceState(null, null, `#${id}`);}}
+                        onClick={handleTitleClick}
                     >
                         <span className="timeline-title-text"> {data.title} </span>
                     </div>
 
-                    {renderData(data.items)}
+                    {data.items && renderData(data.items)}
                 </div>
             </TimelineContent>
         </TimelineItem>
-    )
-}
+    );
+});
+
+export default ProjectCard;

@@ -34,6 +34,7 @@
     text-shadow: 0 0 80px rgb(192 219 255 / 35%), 0 0 32px rgb(65 120 255 / 24%);
     transition: all 0.3s ease-in-out;
 }
+
 .profile-subtitle-text{
     background: linear-gradient(to right, rgb(226, 23, 23), rgb(255, 79, 26));
     /* background: linear-gradient(to right, #30CFD0, #c43ad6); */

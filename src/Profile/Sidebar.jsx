@@ -9,7 +9,7 @@ export default function Sidebar() {
     const navigate = useNavigate();
     const isHomePage = location.pathname === '/' || location.pathname === '';
     
-    // Check for hash in the URL when component mounts
+    // Check for hash in the URL when component mounts or location changes
     useEffect(() => {
         if (location.hash) {
             // Remove the # from the hash
@@ -24,7 +24,7 @@ export default function Sidebar() {
                 }
             }, 300);
         }
-    }, [location.hash]);
+    }, [location]);
     
     // Function to handle section navigation
     const scrollToSection = (sectionId) => {
@@ -74,6 +74,13 @@ export default function Sidebar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [isHomePage]);
     
+    // Function to handle direct navigation links, ensuring they work on first click
+    const handleLinkClick = (e, path) => {
+        // No need to prevent default as React Router's Link handles this
+        // Just make sure we're forcing a navigation
+        navigate(path);
+    };
+    
     return (
         <div className="sidebar">
             <div className="sidebar-content">
@@ -108,14 +115,22 @@ export default function Sidebar() {
                                     <span className="sidebar-text">Projects</span>
                                 </li>
                                 <li>
-                                    <Link to="/passions" className="sidebar-link">
+                                    <Link 
+                                        to="/passions" 
+                                        className="sidebar-link"
+                                        onClick={(e) => handleLinkClick(e, '/passions')}
+                                    >
                                         <FaHeart className="sidebar-icon" />
                                         <span className="sidebar-text">Passions</span>
                                     </Link>
                                 </li>
                                 <li>    
-                                    <Link to="/workex" className="sidebar-link">
-                                        <FaProjectDiagram className="sidebar-icon" />
+                                    <Link 
+                                        to="/workex" 
+                                        className="sidebar-link"
+                                        onClick={(e) => handleLinkClick(e, '/workex')}
+                                    >
+                                        <FaBriefcase className="sidebar-icon" />
                                         <span className="sidebar-text">Work Ex</span>
                                     </Link>
                                 </li>
@@ -124,19 +139,31 @@ export default function Sidebar() {
                             // Navigation for other pages
                             <>
                                 <li>
-                                    <Link to="/" className="sidebar-link">
+                                    <Link 
+                                        to="/" 
+                                        className="sidebar-link"
+                                        onClick={(e) => handleLinkClick(e, '/')}
+                                    >
                                         <FaHome className="sidebar-icon" />
                                         <span className="sidebar-text">Home</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/passions" className={location.pathname === '/passions' ? 'sidebar-link active' : 'sidebar-link'}>
+                                    <Link 
+                                        to="/passions" 
+                                        className={location.pathname === '/passions' ? 'sidebar-link active' : 'sidebar-link'}
+                                        onClick={(e) => handleLinkClick(e, '/passions')}
+                                    >
                                         <FaHeart className="sidebar-icon" />
                                         <span className="sidebar-text">Passions</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/workex" className={location.pathname === '/workex' ? 'sidebar-link active' : 'sidebar-link'}>
+                                    <Link 
+                                        to="/workex" 
+                                        className={location.pathname === '/workex' ? 'sidebar-link active' : 'sidebar-link'}
+                                        onClick={(e) => handleLinkClick(e, '/workex')}
+                                    >
                                         <FaBriefcase className="sidebar-icon" />
                                         <span className="sidebar-text">Work Ex</span>
                                     </Link>

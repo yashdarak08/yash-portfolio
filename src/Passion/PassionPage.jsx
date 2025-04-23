@@ -4,12 +4,10 @@ import './PassionPage.css';
 import { FaArrowLeft } from 'react-icons/fa';
 
 export default function PassionPage() {
+  document.title = "Yash Darak | Passions";
   return (
     <div className="passion-container">
       <div className="passion-header">
-        <Link to="/" className="back-button">
-          <FaArrowLeft /> Back to Portfolio
-        </Link>
         <h1 className="passion-title">My Passions</h1>
       </div>
       

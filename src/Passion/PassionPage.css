@@ -9,33 +9,9 @@
 .passion-header {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 40px;
   position: relative;
-}
-
-.back-button {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 15px;
-  color: #fff;
-  text-decoration: none;
-  border: 2px double transparent;
-  background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), 
-                    radial-gradient(circle at left top, rgb(23, 226, 74), rgb(10, 101, 238));
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  position: absolute;
-  left: 0;
-}
-
-.back-button:hover {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-.back-button svg {
-  margin-right: 8px;
 }
 
 .passion-title {
@@ -100,11 +76,6 @@
   .passion-header {
     flex-direction: column;
     margin-bottom: 30px;
-  }
-  
-  .back-button {
-    position: relative;
-    margin-bottom: 20px;
   }
   
   .passion-title {

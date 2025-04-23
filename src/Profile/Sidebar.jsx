@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaHome, FaTools, FaProjectDiagram, FaHeart } from 'react-icons/fa';
+import { FaHome, FaTools, FaProjectDiagram, FaHeart, FaBriefcase } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './SidebarCSS.css';
 
@@ -113,6 +113,12 @@ export default function Sidebar() {
                                         <span className="sidebar-text">Passions</span>
                                     </Link>
                                 </li>
+                                <li>    
+                                    <Link to="/workex" className="sidebar-link">
+                                        <FaProjectDiagram className="sidebar-icon" />
+                                        <span className="sidebar-text">Work Ex</span>
+                                    </Link>
+                                </li>
                             </>
                         ) : (
                             // Navigation for other pages
@@ -127,6 +133,12 @@ export default function Sidebar() {
                                     <Link to="/passions" className={location.pathname === '/passions' ? 'sidebar-link active' : 'sidebar-link'}>
                                         <FaHeart className="sidebar-icon" />
                                         <span className="sidebar-text">Passions</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/workex" className={location.pathname === '/workex' ? 'sidebar-link active' : 'sidebar-link'}>
+                                        <FaBriefcase className="sidebar-icon" />
+                                        <span className="sidebar-text">Work Ex</span>
                                     </Link>
                                 </li>
                             </>

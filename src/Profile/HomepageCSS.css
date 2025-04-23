@@ -253,6 +253,72 @@
 }
 
 
+/* Base style for the timeline content container with horizontal fading effect */
+.timeline-content-div {
+    position: relative;       /* Allows absolute positioning of child elements relative to this container */
+    border-radius: 12px;      /* Rounds the corners of the container with a 12px radius */
+    padding: 16px;            /* Adds 16px of space inside the container on all sides */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  /* Adds a soft shadow: 0px horizontal offset, 4px vertical offset, 20px blur, semi-transparent black */
+    background: rgba(20, 10, 10, 0.2);          /* Sets a very subtle dark reddish background with high transparency */
+    backdrop-filter: blur(8px);                 /* Applies an 8px blur effect to content behind this element (works in modern browsers) */
+  }
+  
+/* Left-aligned cards: fade from left to right */
+.MuiTimelineItem-root:nth-of-type(odd) .timeline-content-div::before {
+    content: '';              /* Required for pseudo-elements to be displayed */
+    position: absolute;       /* Positions this element relative to its parent (.timeline-content-div) */
+    top: 0;                   /* Aligns to the top of the parent */
+    left: 0;                  /* Aligns to the left of the parent */
+    height: 100%;             /* Makes the height equal to the full height of the parent */
+    width: 100%;              /* Makes the width equal to the full width of the parent */
+    background: linear-gradient(to right,       /* Creates a gradient that transitions from left to right */
+      rgba(238, 29, 98, 0.1),                  /* Starts with a semi-transparent green */
+      rgba(22, 26, 43, 0.3),                  /* Transitions to a lighter blue */
+      rgba(22, 26, 43, 0.2),                 /* Then an even lighter blue */
+      transparent);                            /* And finally becomes completely transparent */
+    border-radius: 12px;      /* Matches the parent's border radius */
+    z-index: -1;              /* Places this element behind the content */
+    pointer-events: none;     /* Makes this element non-interactive (clicks pass through to elements behind it) */
+  }
+  
+  /* Right-aligned cards: fade from right to left */
+  .MuiTimelineItem-root:nth-of-type(even) .timeline-content-div::before {
+    content: '';              /* Required for pseudo-elements */
+    position: absolute;       /* Absolute positioning relative to parent */
+    top: 0;                   /* Aligns to top of parent */
+    right: 0;                 /* Aligns to right of parent (instead of left like the previous rule) */
+    height: 100%;             /* Full height of parent */
+    width: 100%;              /* Full width of parent */
+    background: linear-gradient(to left,        /* Creates a gradient going from right to left (opposite direction) */
+     rgba(238, 29, 99, 0.1),                  /* Starts with semi-transparent green (on the right side) */
+      rgba(22, 26, 43, 0.3),                  /* Transitions to lighter blue */
+      rgba(22, 26, 43, 0.2),                 /* Even lighter blue */
+      transparent);                            /* Completely transparent at the left edge */
+    border-radius: 12px;      /* Matches parent's border radius */
+    z-index: -1;              /* Behind the content */
+    pointer-events: none;     /* Non-interactive */
+  }
+  
+  /* Style the timeline connectors with gradient fade */
+  .MuiTimelineConnector-root {
+    background: linear-gradient(to bottom,      /* Creates a vertical gradient from top to bottom */
+      rgba(238, 29, 98, 0.7),                   /* Starts with a more opaque pinkish-red at the top */
+      rgba(238, 29, 98, 0.3),                   /* Transitions to a semi-transparent red */
+      rgba(238, 29, 98, 0.1));                  /* Ends with a very transparent red at the bottom */
+    width: 2px;               /* Makes the connector line 2 pixels wide */
+  }
+  
+  /* Hover effect */
+  .timeline-content-div:hover {
+    transform: translateY(-2px);               /* Moves the element 2px upward when hovered */
+    transition: all 0.3s ease;                 /* Animates all property changes over 0.3 seconds with a smooth curve */
+  }
+  
+  /* Enhance the timeline dots */
+  .MuiTimelineDot-root {
+    box-shadow: 0 0 15px rgba(238, 29, 98, 0.6);  /* Adds a glowing effect around timeline dots with a pinkish-red color */
+  }
+
 
 .btn {
     font-family: sans-serif;

@@ -3,57 +3,47 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './Workex.css';
 import ProjectCard from '../Profile/ProjectCard'
 import { Link } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
-import { GiMeshNetwork } from "react-icons/gi";
 import { CiViewTable } from "react-icons/ci";
-import { SiTensorflow, SiHuggingface, SiMlflow, SiPrometheus, SiGrafana, SiKubernetes, SiNumpy, SiGraphql, SiCplusplus, SiNvidia, SiJupyter, SiScipy, SiScikitlearn, SiNeo4J, SiPytorch, SiCss3, SiFastapi, SiHtml5, SiMongodb, SiMysql, SiPython, SiReact, SiRedux } from "react-icons/si";
+import { SiHuggingface, SiPlotly, SiMlflow, SiPrometheus, SiGrafana, SiKubernetes, SiNumpy, SiGraphql, SiCplusplus, SiNvidia, SiJupyter, SiOpencv, SiScikitlearn, SiPytorch, SiCss3, SiFastapi, SiHtml5, SiMongodb, SiMysql, SiPython, SiReact } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
-import { DiSqllite } from "react-icons/di";
-import { FaGamepad, FaDocker, FaAws } from "react-icons/fa";
-import { MdOutlineSoupKitchen } from "react-icons/md";
+import { FaDocker, FaAws } from "react-icons/fa";
 import Timeline from '@mui/lab/Timeline';
-import { binaryTreeGithubURL, bstVisulizationURL, heapVisulizationURL, mathsyraBackendURL, mathsyraFrontendURL } from '../constants';
+import { LuBrainCircuit } from "react-icons/lu";
 
 export default function Workex({isMobile}) {
     document.title = "Yash Darak | Work Experience";
-    const graphDLData = {
-        title: "Graph Deep Learning (GNNs)",
-        id: "graph-deep-learning-sparse",
-        oppositeContent: (<>Academic Research with a Professor<br /> Currently writing the paper!</>),
+    const nyuworkex = {
+        title: "Research Assistant/Machine Learning Engineer",
+        id: "nyu-workex",
+        oppositeContent: (<>New York University<br /> Sep 2023 - Present</>),
     
         items: [
             {
                 type: "text",
-                content: "I proposed and developed a Graph Machine Learning model aimed at improving predictions of potential mergers and acquisitions (M&A)."
+                content: "Researched and implemented Bayesian Optimization to tune Deep Neural Networks (RNNs, Transformers), improving training stability and reducing inference variance by 28% across 100M+ parameter models using PyTorch."
             },
             {
                 type: "text",
-                content: "I led the end-to-end pipeline, starting from extracting and processing over 250 GB of online financial data through web scraping techniques."
+                content: ""
             },
             {
                 type: "text",
-                content: "This involved converting raw financial data into structured knowledge graphs using Neo4j, enabling complex relationship modeling."
+                content: "Optimized high performance CUDA(C++) kernels for large-scale training pipelines, reducing runtime by 30% in distributed GPU environments."
             },
             {
                 type: "text",
-                content: "The most exciting part was implementing predictive algorithms for sparse M&A networks, utilizing Graph Neural Networks (GNNs) and node embeddings to identify acquisition patterns and hidden relationships."
+                content: ""
             },
             {
-                type: "collapse",
-                title: "Roles / Responsibilities",
-                id: "graph-deep-learning-sparse-roles",
-                items: [
-                    {
-                        type: "list",
-                        content: [
-                            "End-to-end project leadership: from data extraction to model deployment.",
-                            "Web scraping and cleaning over 250 GB of financial datasets.",
-                            "Knowledge graph design and implementation using Neo4j.",
-                            "Modeling acquisition relationships using Graph Neural Networks (GNNs).",
-                            "Training and optimizing models for sparse graph data."
-                        ],
-                    },
-                ],
+                type: "text",
+                content: "Fine-tuned and pre-trained Large Language Models (LLMs) using Langchain and HuggingFace to automate research paper summarization and literature review tasks, \
+                            reducing document review time. Optimized model performance using techniques like quantization and distillation for deployment on constrained environments, \
+                            reducing manual effort by 25% and improving content extraction accuracy for faculty and students at NYU. involved converting raw financial data into structured \
+                            knowledge graphs using Neo4j, enabling complex relationship modeling."
+            },
+            {
+                type: "text",
+                content: ""
             },
             {
                 type: "chips",
@@ -61,57 +51,212 @@ export default function Workex({isMobile}) {
                 content: [
                     { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
                     { text: "Pytorch", icon: <SiPytorch className="timeline-tech-icon" /> },
-                    { text: "Neo4j", icon: <SiNeo4J className="timeline-tech-icon" /> },
-                    { text: "PyTorch Geometric", icon: <SiPytorch className="timeline-tech-icon" /> },
-                    { text: "BeautifulSoup", icon: <MdOutlineSoupKitchen className="timeline-tech-icon" /> },
-                    { text: "NetworkX", icon: <GiMeshNetwork className="timeline-tech-icon" /> },
+                    { text: "C++", icon: <SiCplusplus className="timeline-tech-icon" /> },
+                    { text: "CUDA", icon: <SiNvidia className="timeline-tech-icon" /> },
+                    { text: "HuggingFace", icon: <SiHuggingface className="timeline-tech-icon" /> },
                 ]
             },
         ]
     }
          
-    const binaryTreeData = {
-        title: "Binary Tree Visualizer",
-        id: "binary-tree",
-        oppositeContent: "March 2021",
+    const iamworkex2 = {
+        title: "Machine Learning Engineer",
+        id: "iam-workex2",
+        oppositeContent: (<>IAM. Pvt. Ltd.<br /> Oct 2022 - Jun 2023</>),
 
         items: [
             {
                 type: "text",
-                content: "An application to visualize insertion, deletion, search and structure of nodes in a Binary Search Tree (BST) and Heap.",
+                content: "Designed and trained convolutional neural network models for motion detection and face recognition using OpenCV, PyTorch, and custom data augmentation pipelines—achieved 92% accuracy on a 10K image test set while sustaining 25 FPS inference."
             },
             {
                 type: "text",
-                content: "The nodes and edges of binary tree are highlighted to depict the path of comparisons that took place to insert/search a node.",
+                content: ""
             },
             {
                 type: "text",
-                content: "This could be very helpful for students to understand the working of BST and Heap.",
+                content: "Integrated the trained models into a real time CCTV analytics pipeline, reducing false positives by 40% and enabling 24/7 automated alerting."
+            },
+            {
+                type: "text",
+                content: ""
+            },
+            {
+                type: "text",
+                content: "Engineered ML pipelines using PySpark, Airflow, and S3, processing 10GB+ of retail (transactional, footfall, energy) data daily for facilities exceeding 20,000 sq.ft to support KPI dashboards and real-time ops decisions.",
+            },
+            {
+                type: "text",
+                content: ""
+            },
+            {
+                type: "text",
+                content: "Engineered robust features from time-series RFID datasets and implemented Multivariate Regression models to improve forecasting accuracy by 20%, using ROC-AUC, RMSE, and confusion matrix for model assessment and validation."
+            },
+            {
+                type: "text",
+                content: ""
+            },
+            {
+                type: "text",
+                content: "Streamlined SQL queries (PostgreSQL) to accelerate production data extraction, cutting report generation time by 20% in Power BI dashboards.",
             },
             {
                 type: "chips",
-                title: "Tech/Learn Stack",
+                title: "Tech Stack",
                 content: [
+                    { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "Deep Learning", icon: <LuBrainCircuit className="timeline-tech-icon" /> },
                     { text: "React", icon: <SiReact className="timeline-tech-icon" /> },
-                    { text: "Html", icon: <SiHtml5 className="timeline-tech-icon" /> },
-                    { text: "CSS", icon: <SiCss3 className="timeline-tech-icon" /> },
-                ]
-            },
-            {
-                type: "links",
-                content: [
-                    { text: "Github", link: binaryTreeGithubURL },
-                    { text: "Heap", link: heapVisulizationURL },
-                    { text: "Binary Search Tree", link: bstVisulizationURL },
+                    { text: "OpenCV", icon: <SiOpencv className="timeline-tech-icon" /> },
+                    { text: "FastAPI", icon: <SiFastapi className="timeline-tech-icon" /> },
+                    { text: "PostgreSQL", icon: <GrMysql className="timeline-tech-icon" /> },
+                    { text: "PySpark", icon: <SiNumpy className="timeline-tech-icon" /> },
+                    { text: "MongoDB", icon: <SiMongodb className="timeline-tech-icon" /> },
+                    { text: "S3", icon: <FaAws className="timeline-tech-icon" /> },
+                    { text: "SQL", icon: <SiMysql className="timeline-tech-icon" /> },
                 ]
             }
         ]
     }
 
+    const atlascopcoworkex = {
+        title: "Machine Learning Engineer",
+        id: "atlascopco-workex", 
+        oppositeContent: (<>Atlas Copco<br /> Aug 2021 - Sep 2022</>),
+
+        items: [
+            {
+                type: "text",
+                content: "Built predictive models and anomaly detection systems from unstructured IoT sensor data using clustering and Statistical Learning, enabling early failure detection \
+                           and reducing operational cost by $50K per year. Validated models by cross-validation and residual error analysis. and trained convolutional neural network models for motion \
+                           detection and face recognition using OpenCV, PyTorch, and custom data augmentation pipelines—achieved 92% accuracy on a 10K image test set while sustaining 25 FPS inference."
+            },
+            {
+                type: "text",
+                content: ""
+            },
+            {
+                type: "text",
+                content: "Designed robust CI/CD pipelines (Jenkins, GitLab CI) to streamline A/B testing and iterative deployment of ML models into production, reducing testing turnaround by 20%, \
+                          directly supporting experimentation culture. the trained models into a real time CCTV analytics pipeline, reducing false positives by 40% and enabling 24/7 automated alerting."
+            },
+            {
+                type: "text",
+                content: ""
+            },
+            {
+                type: "text",
+                content: "Engineered and deployed low-latency deep learning inference APIs (<20ms) using FastAPI, Docker, and Kubernetes. Implemented quantization and caching strategies to reduce \
+                          latency by 25%.  ML pipelines using PySpark, Airflow, and S3, processing 10GB+ of retail (transactional, footfall, energy) data daily for facilities exceeding 20,000 sq.ft \
+                          to support KPI dashboards and real-time ops decisions.",
+            },
+            {
+                type: "text",
+                content: ""
+            },
+            {
+                type: "text",
+                content: "Built CI/CD pipelines enabling <1-hour rollbacks and 99.9% uptime for real-time industrial monitoring services.d robust features from time-series RFID datasets and implemented Multivariate Regression models to improve forecasting accuracy by 20%, using ROC-AUC, RMSE, and confusion matrix for model assessment and validation."
+            },
+            {
+                type: "chips",
+                title: "Tech Stack",
+                content: [
+                    { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "Deep Learning", icon: <LuBrainCircuit className="timeline-tech-icon" /> },
+                    { text: "PowerBI", icon: <CiViewTable className="timeline-tech-icon" /> },
+                    { text: "FastAPI", icon: <SiFastapi className="timeline-tech-icon" /> },
+                    { text: "PostgreSQL", icon: <GrMysql className="timeline-tech-icon" /> },
+                    { text: "PySpark", icon: <SiNumpy className="timeline-tech-icon" /> },
+                    { text: "Docker", icon: <FaDocker className="timeline-tech-icon" /> },
+                    { text: "Kubernetes", icon: <SiKubernetes className="timeline-tech-icon" /> },
+                    { text: "Grafana", icon: <SiGrafana className="timeline-tech-icon" /> },
+                    { text: "Prometheus", icon: <SiPrometheus className="timeline-tech-icon" /> },
+                    { text: "MLFlow", icon: <SiMlflow className="timeline-tech-icon" /> },
+                ]
+            }
+        ]
+    }
+
+    const iamworkex1 = {
+        title: "Machine Learning Intern",
+        id: "iam-workex1", 
+        oppositeContent: (<>IAM Pvt. Ltd.<br /> Jan 2021 - Jun 2021</>),
+
+        items: [
+            {
+                type: "text",
+                content: "Implemented experiment tracking via MLFlow, using confidence intervals and uplift metrics to compare alternate routing models for cloud kitchen logistics."
+            },
+            {
+                type: "text",
+                content: ""
+            },
+            {
+                type: "text",
+                content: "Worked independently with business stakeholders to scope metrics for optimization (delivery time, cost) and reduce logistics overhead by 20%."
+            },
+            {
+                type: "text",
+                content: ""
+            },
+            {
+                type: "text",
+                content: "•	Automated model deployment across dev/staging/prod environments using Ansible and GitLab CI, ensuring reproducibility and continuous integration.",
+            },
+            {
+                type: "chips",
+                title: "Tech Stack",
+                content: [
+                    { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "MLFlow", icon: <SiMlflow className="timeline-tech-icon" /> },
+                    { text: "Ansible", icon: <SiNumpy className="timeline-tech-icon" /> },
+                    { text: "PostgreSQL", icon: <GrMysql className="timeline-tech-icon" /> },
+                ]
+            }
+        ]
+    }
+
+    const vitworkex = {
+        title: "Undergraduate Research Assistant (CFD)",
+        id: "vit-workex", 
+        oppositeContent: (<>Vishwakarma Institute of Technology<br /> Jan 2020 - Dec 2020</>),
+
+        items: [
+            {
+                type: "text",
+                content: "Conducted Data Analysis using Pandas and Matplotlib for 50+ peer-reviewed research papers and general help with research experiment tracking via MLFlow, using confidence intervals and uplift metrics to compare alternate routing models for cloud kitchen logistics."
+            },
+            {
+                type: "text",
+                content: ""
+            },
+            {
+                type: "text",
+                content: "Defined Mathematical Models for fluid flow and pressure analysis using MATLAB for integrity assessments and failure analysis. independently with business stakeholders to scope metrics for optimization (delivery time, cost) and reduce logistics overhead by 20%."
+            },
+            {
+                type: "chips",
+                title: "Tech Stack",
+                content: [
+                    { text: "Python", icon: <SiPython className="timeline-tech-icon" /> },
+                    { text: "Matplotlib", icon: <SiPlotly className="timeline-tech-icon" /> },
+                    { text: "R", icon: <SiNumpy className="timeline-tech-icon" /> },
+                    { text: "Pandas", icon: <CiViewTable className="timeline-tech-icon" /> },
+                    { text: "MATLAB", icon: <SiNumpy className="timeline-tech-icon" /> },
+                ]
+            }
+        ]
+    }
 
     const projects = [
-        graphDLData,
-        binaryTreeData,
+        nyuworkex,
+        iamworkex2,
+        atlascopcoworkex,
+        iamworkex1,
+        vitworkex
+
     ]
 
     return (
@@ -122,7 +267,7 @@ export default function Workex({isMobile}) {
                 </span>
             </div>
             <div className="profile-title-div" style={{textAlign: 'center'}} >
-                <span className="profile-description-div" style={{marginTop: "0px", fontSize: '15px'}}>
+                <span className="profile-description-div" style={{marginTop: "0px", fontSize: '16px'}}>
                     My humble attempt to contribute to the world of technology and machine learning.
                 </span>
             </div>

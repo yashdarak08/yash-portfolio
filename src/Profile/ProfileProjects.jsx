@@ -796,10 +796,10 @@ export default function ProfileProjects({isMobile}) {
                 {
                     projects.map((project, index) => {
                         return (
-                            <ProjectCard data={project} align={index % 2 === 0 ? "left" : "right"} 
-                                aosAnimation={
-                                    isMobile ? "fade-up" : index % 2 === 0 ? "zoom-out-left" : "zoom-out-right"
-                                } 
+                            <ProjectCard 
+                                key={project.id || `project-${index}`}
+                                data={project} align={index % 2 === 0 ? "left" : "right"} 
+                                aosAnimation={ isMobile ? "fade-up" : index % 2 === 0 ? "zoom-out-left" : "zoom-out-right"} 
                             />
                         )
                     })

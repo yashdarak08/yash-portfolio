@@ -2,6 +2,7 @@ import './App.css'
 import Homepage from './Profile/Homepage.jsx'
 import PassionPage from './Passion/PassionPage.jsx'
 import Sidebar from './Profile/Sidebar.jsx'
+import Workex from './WorkExperience/Workex.jsx'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -20,6 +21,9 @@ function App(props) {
           
           {/* Route for the passions page */}
           <Route path="/passions" element={<PassionPage />} />
+
+          {/* Route for the new wokex page */}
+          <Route path="/Workex" element={<Workex />} />
           
           {/* Redirect '/intro' to the homepage with a hash */}
           <Route path="/intro" element={<Navigate to="/#intro" replace />} />

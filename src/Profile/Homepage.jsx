@@ -8,19 +8,24 @@ export default function Homepage() {
     document.title = "Yash Darak";
 
     const isMobile = window.matchMedia("only screen and (max-width: 800px)").matches;
-
-    useEffect(() => {
-        // This is for the viewport
-        // If its a mobile device, then set the viewport to 800px
-        setTimeout(() => {
-            if(window.location.hash){
-                const anchor = document.querySelector(window.location.hash)
-                if(anchor){
-                    console.log(anchor)
-                    anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        useEffect(() => {
+            // This is for the viewport
+            // If its a mobile device, then set the viewport to 800px
+            setTimeout(() => {
+                if(window.location.hash && window.location.hash !== '#/') {
+                    // Extract the section ID from the hash (remove the leading '#' or '#/')
+                    const hashValue = window.location.hash.replace('#/', '').replace('#', '');
+                    
+                    // Only proceed if we have a non-empty hash
+                    if (hashValue) {
+                        const anchor = document.getElementById(hashValue);
+                        if(anchor){
+                            console.log('Scrolling to element with ID:', hashValue);
+                            anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }
                 }
-            }
-        }, 200);
+            }, 200);
 
         const currentMeta = document.getElementsByTagName('meta')['viewport'].content;
 

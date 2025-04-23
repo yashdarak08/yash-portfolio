@@ -1,117 +1,117 @@
 .passion-container {
-    background-color: var(--primaryBackground);
-    min-height: 100vh;
-    color: var(--primaryColor);
-    padding: 30px;
-    font-family: 'Roboto', sans-serif;
+  background-color: var(--primaryBackground);
+  min-height: 100vh;
+  color: var(--primaryColor);
+  padding: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.passion-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  color: #fff;
+  text-decoration: none;
+  border: 2px double transparent;
+  background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), 
+                    radial-gradient(circle at left top, rgb(23, 226, 74), rgb(10, 101, 238));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+}
+
+.back-button:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.back-button svg {
+  margin-right: 8px;
+}
+
+.passion-title {
+  background: linear-gradient(to right, rgb(226, 23, 23), rgb(255, 79, 26));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 40px;
+  font-weight: 700;
+  text-shadow: 0 0 80px rgb(192 219 255 / 35%), 0 0 32px rgb(65 120 255 / 24%);
+  text-align: center;
+  width: 100%;
+}
+
+.passion-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.passion-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(20, 10, 10, 0.34);
+  border-radius: 12px;
+  box-shadow: 5px 5px 115px -14px black;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.passion-section h2 {
+  background: linear-gradient(to right, rgb(23, 226, 74), rgb(10, 101, 238));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.passion-section p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.passion-highlight {
+  font-style: italic;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 3px solid rgb(23, 226, 74);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Mobile responsiveness */
+@media only screen and (max-width: 800px) {
+  .passion-container {
+    padding: 15px;
   }
   
   .passion-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-    position: relative;
+    flex-direction: column;
+    margin-bottom: 30px;
   }
   
   .back-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 15px;
-    color: #fff;
-    text-decoration: none;
-    border: 2px double transparent;
-    background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), 
-                      radial-gradient(circle at left top, rgb(23, 226, 74), rgb(10, 101, 238));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    position: absolute;
-    left: 0;
-  }
-  
-  .back-button:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  }
-  
-  .back-button svg {
-    margin-right: 8px;
+    position: relative;
+    margin-bottom: 20px;
   }
   
   .passion-title {
-    background: linear-gradient(to right, rgb(226, 23, 23), rgb(255, 79, 26));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 40px;
-    font-weight: 700;
-    text-shadow: 0 0 80px rgb(192 219 255 / 35%), 0 0 32px rgb(65 120 255 / 24%);
-    text-align: center;
-    width: 100%;
-  }
-  
-  .passion-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: left;
-  }
-  
-  .passion-section {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: rgba(20, 10, 10, 0.34);
-    border-radius: 12px;
-    box-shadow: 5px 5px 115px -14px black;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 32px;
   }
   
   .passion-section h2 {
-    background: linear-gradient(to right, rgb(23, 226, 74), rgb(10, 101, 238));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 28px;
-    margin-bottom: 20px;
-    font-weight: 600;
+    font-size: 24px;
   }
-  
-  .passion-section p {
-    line-height: 1.6;
-    margin-bottom: 15px;
-    font-size: 16px;
-  }
-  
-  .passion-highlight {
-    font-style: italic;
-    padding: 15px;
-    margin: 20px 0;
-    border-left: 3px solid rgb(23, 226, 74);
-    background: rgba(255, 255, 255, 0.05);
-  }
-  
-  /* Mobile responsiveness */
-  @media only screen and (max-width: 800px) {
-    .passion-container {
-      padding: 15px;
-    }
-    
-    .passion-header {
-      flex-direction: column;
-      margin-bottom: 30px;
-    }
-    
-    .back-button {
-      position: relative;
-      margin-bottom: 20px;
-    }
-    
-    .passion-title {
-      font-size: 32px;
-    }
-    
-    .passion-section h2 {
-      font-size: 24px;
-    }
-  }
+}

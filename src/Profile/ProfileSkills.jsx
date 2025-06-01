@@ -4,19 +4,10 @@ import { CiViewTable } from "react-icons/ci";
 import { GiBrain } from "react-icons/gi";
 import { AiOutlineSolution, AiOutlineTeam, AiFillFileExcel } from "react-icons/ai";
 import { GrMysql } from "react-icons/gr";
-import { MdOutlineBakeryDining } from "react-icons/md";
 
 export default function ProfileSkills() {
 
     const ref = React.useRef(null);
-    // useEffect(() => {
-    //     if (isInViewport && window.location.hash !== `#skills`) {
-    //         // setCollapseKeys(defaultExpanded);
-    //         // push the #id to the url
-    //         // replace
-    //         window.history.replaceState(null, null, `#skills`);
-    //     }
-    // }, [isInViewport]);
 
     const skills = [
         { name: 'Python', icon: <SiPython className="profile-tech-icon" /> },
@@ -53,7 +44,6 @@ export default function ProfileSkills() {
             </div>
             <div style={{marginTop: '14px', maxWidth: '500px', display: 'inline-flex'}}>
             <div>
-
                 {skills.map((skill, index) => {
                     return (
                         <span className="profile-skills-chip" key={index} 
@@ -70,3 +60,27 @@ export default function ProfileSkills() {
         </div>
     )
 }
+
+// to disable the AOS animations
+//             <div style={{marginTop: '14px', maxWidth: '500px', display: 'inline-flex'}}>
+//                 <div>
+//                     {skills.map((skill, index) => {
+//                         return (
+//                             <span 
+//                                 className="profile-skills-chip" 
+//                                 key={index}
+//                                 // REMOVE individual AOS animations - just use CSS stagger
+//                                 style={{
+//                                     animationDelay: `${index * 50}ms`
+//                                 }}
+//                             >
+//                                 {skill.icon}
+//                                 {skill.name}
+//                             </span>
+//                         )
+//                     })}
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }

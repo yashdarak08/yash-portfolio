@@ -9,17 +9,24 @@ const Homepage = lazy(() => import('./Profile/Homepage.jsx'))
 const PassionPage = lazy(() => import('./Passion/PassionPage.jsx'))
 const Workex = lazy(() => import('./WorkExperience/Workex.jsx'))
 const Sidebar = lazy(() => import('./Profile/Sidebar.jsx'))
+const isMobile = window.matchMedia("(max-width: 800px)").matches;
 
-// Initialize AOS with optimized settings
 AOS.init({
-  // FIXED: Don't disable on mobile, but use lighter settings
-  disable: false,        // Enable on all devices
-  once: true,           // Only animate elements once
-  mirror: false,        // No mirroring animations
-  throttleDelay: 99,    // Delay for throttling
-  duration: 600,        // Shorter duration for mobile
-  easing: 'ease-out',   // Simpler easing
-  offset: 50,           // Smaller offset for mobile
+  disable: false,
+  once: true,
+  mirror: false,
+  
+  // Different settings for mobile vs desktop
+  throttleDelay: isMobile ? 300 : 100,
+  debounceDelay: isMobile ? 300 : 50,
+  duration: isMobile ? 200 : 600,        // Much faster on mobile
+  easing: isMobile ? 'ease' : 'ease-out',
+  offset: isMobile ? 20 : 50,             // Trigger earlier on mobile
+  
+  // Mobile-specific optimizations
+  startEvent: 'DOMContentLoaded',
+  animatedClassName: 'aos-animate',
+  initClassName: 'aos-init',
 });
 
 // Loading component with better mobile support

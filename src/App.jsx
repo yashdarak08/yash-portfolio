@@ -12,17 +12,35 @@ const Sidebar = lazy(() => import('./Profile/Sidebar.jsx'))
 
 // Initialize AOS with optimized settings
 AOS.init({
-  // Customize AOS to be less resource-intensive
-  disable: 'mobile', // Disable on mobile to improve performance
-  once: true,        // Only animate elements once
-  mirror: false,     // No mirroring animations
-  throttleDelay: 99, // Delay for throttling
+  // FIXED: Don't disable on mobile, but use lighter settings
+  disable: false,        // Enable on all devices
+  once: true,           // Only animate elements once
+  mirror: false,        // No mirroring animations
+  throttleDelay: 99,    // Delay for throttling
+  duration: 600,        // Shorter duration for mobile
+  easing: 'ease-out',   // Simpler easing
+  offset: 50,           // Smaller offset for mobile
 });
+
+// Loading component with better mobile support
+const LoadingComponent = () => (
+  <div className="loading" style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    background: 'var(--primaryBackground)',
+    color: 'var(--primaryColor)',
+    fontSize: '18px'
+  }}>
+    Loading...
+  </div>
+);
 
 function App() {
   return (
     <HashRouter>
-      <Suspense fallback={<div className="loading">Loading...</div>}>
+      <Suspense fallback={<LoadingComponent />}>
         <Sidebar />
         <div className="main-content">
           <Routes>

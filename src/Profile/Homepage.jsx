@@ -27,18 +27,18 @@ export default function Homepage() {
                 }
             }, 200);
 
-        const currentMeta = document.getElementsByTagName('meta')['viewport'].content;
+        // const currentMeta = document.getElementsByTagName('meta')['viewport'].content;
 
-        if(isMobile){ 
-            document.getElementsByTagName('meta')['viewport'].content='width=800, user-scalable=yes';
-        }
-        else{
-            document.getElementsByTagName('meta')['viewport'].content='width=device-width, initial-scale=1';
-        }
+        // if(isMobile){ 
+        //     document.getElementsByTagName('meta')['viewport'].content='width=800, user-scalable=yes';
+        // }
+        // else{
+        //     document.getElementsByTagName('meta')['viewport'].content='width=device-width, initial-scale=1';
+        // }
 
-        return () => {
-            document.getElementsByTagName('meta')['viewport'].content = currentMeta;
-        }
+        // return () => {
+        //     document.getElementsByTagName('meta')['viewport'].content = currentMeta;
+        // }
     }, [isMobile]);
 
     return (
